@@ -6,7 +6,7 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
         auth:
-          username: smartcloud2022
+          username: efeokus
           password: $DOCKERPASS
         
     steps:
@@ -28,30 +28,30 @@ jobs:
             echo "--------- The images is Building  ------------"
   
             docker build -t udagram-api-feed ./udagram-api-feed
-            docker tag udagram-api-feed smartcloud2022/udagram-api-feed:v2
+            docker tag udagram-api-feed efeokus/udagram-api-feed:v1
 
             docker build -t udagram-api-user ./udagram-api-user
-            docker tag udagram-api-user smartcloud2022/udagram-api-user:v2
+            docker tag udagram-api-user efeokus/udagram-api-user:v1
     
             docker build -t udagram-frontend ./udagram-frontend
-            docker tag udagram-frontend smartcloud2022/udagram-frontend:v2
+            docker tag udagram-frontend efeokus/udagram-frontend:v1
 
             docker build -t udagram-reverseproxy ./udagram-reverseproxy
-            docker tag udagram-reverseproxy smartcloud2022/udagram-reverseproxy:v2
+            docker tag udagram-reverseproxy efeokus/udagram-reverseproxy:v1
   
             echo "----------All image succesfully built----------"
 
             
             echo "----------login in to hub----------------------"
  
-            docker login -u smartcloud2022 -p $DOCKERPASS
+            docker login -u efeokus -p $DOCKERPASS
        
             echo "----------Pushing images to dockerhub----------"
             
-            docker push smartcloud2022/udagram-api-feed:v2
-            docker push smartcloud2022/udagram-api-user:v2
-            docker push smartcloud2022/udagram-frontend:v2
-            docker push smartcloud2022/udagram-reverseproxy:v2
+            docker push efeokus/udagram-api-feed:v1
+            docker push efeokus/udagram-api-user:v1
+            docker push efeokus/udagram-frontend:v1
+            docker push efeokus/udagram-reverseproxy:v1
 
 
 workflows:
