@@ -42,4 +42,5 @@ venv/
 !.elasticbeanstalk/*.global.yml
 *set_env
 .travis.yml
-deployment
+deployment/*-secret.yaml
+deployment/*-configmap.yaml
